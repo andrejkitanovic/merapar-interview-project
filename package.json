@@ -1,0 +1,27 @@
+{
+  "name": "frontend-interview-project",
+  "version": "1.0.0",
+  "description": "Interview project for Merapar frontend candidates",
+  "main": "index.ts",
+  "scripts": {
+    "watch": "webpack --watch --env=prod",
+    "start:dev": "ts-node ./src/index.ts",
+    "build": "tsc",
+    "format:check": "prettier --check ./src/**/*.ts",
+    "format:write": "prettier --write ./src/**/*.ts",
+    "lint:check": "eslint ./src/**/*.ts",
+    "lint:fix": "eslint --fix ./src/**/*.ts"
+  },
+  "keywords": [
+    "merapar",
+    "interview",
+    "frontend"
+  ],
+  "author": "Merapar",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.25.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
+  }
+}
