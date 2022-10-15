@@ -7,9 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { sortEntitiesByDate } from "./utils/sort.mjs";
 import useData from "./data/index.mjs";
+import { sortEntitiesByDate } from "./utils/sort.mjs";
 import { dateTimeFormatter } from "./utils/date.mjs";
+import { userSVG } from "./utils/svgs.mjs";
 (function () {
     return __awaiter(this, void 0, void 0, function* () {
         if (typeof window === "undefined")
@@ -19,6 +20,7 @@ import { dateTimeFormatter } from "./utils/date.mjs";
         if (!postsSection)
             return;
         const { getComments, getPosts, getUsers } = yield useData();
+        // Start with fetching promises
         const postsPromise = getPosts();
         const commentsPromise = getComments();
         const usersPromise = getUsers();
@@ -27,10 +29,11 @@ import { dateTimeFormatter } from "./utils/date.mjs";
             // [POSTS] Write posts on page
             postsSection.insertAdjacentHTML("beforeend", `
         <div class="posts__post" aria-labelledby="${post.id}" aria-ownedby="${post.user_id}">
-          <div class="posts__post-user"></div>
+          <div class="posts__post-user">
+            <div class="posts__post-date">${dateTimeFormatter(post.created_at)}</div>
+          </div>
           <div class="posts__post-title">${post.title}</div>
           <div class="posts__post-body">${post.body}</div>
-          <div class="posts__post-date">${dateTimeFormatter(post.created_at)}</div>
           <div class="posts__post-comments"></div>
         </div>
       `);
@@ -43,11 +46,12 @@ import { dateTimeFormatter } from "./utils/date.mjs";
                 return;
             postComments.insertAdjacentHTML("beforeend", `
         <div class="posts__comment" aria-labelledby="${comment.id}" aria-ownedby="${comment.user_id}">
-          <div class="posts__comment-user"></div>
+          <div class="posts__comment-user">
+            <div class="posts__comment-date">${dateTimeFormatter(comment.created_at)}</div>
+          </div>
           <div class="posts__comment-body">
             ${comment.body}
           </div>
-          <div class="posts__comment--date">${dateTimeFormatter(comment.created_at)}</div>
         </div>
       `);
         });
@@ -56,18 +60,20 @@ import { dateTimeFormatter } from "./utils/date.mjs";
             // [USER][POSTS] Assign User to Post
             const postUser = postsSection.querySelector(`div.posts__post[aria-ownedby="${user.id}"] .posts__post-user`);
             if (postUser) {
-                postUser.innerHTML = `
-        <div>
-        </div>
-      `;
+                postUser.insertAdjacentHTML("afterbegin", `
+      <div class="posts__post-user-icon">${userSVG}</div>
+      <div class="posts__post-user-name">${user.name}</div>
+      <div class="posts__post-user-email">${user.email}</div>
+      `);
             }
             // [USER][COMMENTS] Assign User to Comment
             const commentUser = postsSection.querySelector(`div.posts__comment[aria-ownedby="${user.id}"] .posts__comment-user`);
             if (commentUser) {
-                commentUser.innerHTML = `
-        <div>
-        </div>
-      `;
+                commentUser.insertAdjacentHTML("afterbegin", `
+      <div class="posts__comment-user-icon">${userSVG}</div>
+      <div class="posts__comment-user-name">${user.name}</div>
+      <div class="posts__comment-user-email">${user.email}</div>
+      `);
             }
         });
     });

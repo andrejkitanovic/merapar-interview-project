@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+* {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+.posts__post {
+  padding: 35px 10px;
+  border-bottom: 1px solid #a8a8a8;
+}
+.posts__post:last-child {
+  margin-bottom: 0;
+}
+.posts__post-title {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+.posts__post-body {
+  margin-bottom: 5px;
+}
+.posts__post-date {
+  color: #a8a8a8;
+}
+.posts__comment {
+  margin-left: 20px;
+  margin-top: 25px;
+}
+.posts__comment-body {
+  margin-bottom: 5px;
+}
+.posts__comment-date {
+  color: #a8a8a8;
+}
+.posts__post-user, .posts__comment-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.posts__post-user-icon, .posts__comment-user-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+.posts__post-user-name, .posts__comment-user-name {
+  font-weight: bold;
+  margin-right: 5px;
+}
+.posts__post-user-email, .posts__comment-user-email {
+  margin-right: 5px;
+}

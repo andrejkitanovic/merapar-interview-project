@@ -7,7 +7,7 @@ enum OrderEnum {
 
 export const sortEntitiesByDate = <T extends EntityType>(
   array: T[],
-  order: OrderEnum = OrderEnum.DESC
+  order: OrderEnum = OrderEnum.DESC // Default sort Descending
 ) => {
   return array.sort((a, b) => {
     const aTimestamp = new Date(a.created_at).getTime();

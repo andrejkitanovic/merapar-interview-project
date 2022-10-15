@@ -1,0 +1,65 @@
+.posts {
+  //  [POST] Styling
+  &__post {
+    padding: 35px 10px;
+    border-bottom: 1px solid #a8a8a8;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__post-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+
+  &__post-body {
+    margin-bottom: 5px;
+  }
+
+  &__post-date {
+    color: #a8a8a8;
+  }
+
+  //  [COMMENT] Styling
+  &__comment {
+    margin-left: 20px;
+    margin-top: 25px;
+  }
+
+  &__comment-body {
+    margin-bottom: 5px;
+  }
+
+  &__comment-date {
+    color: #a8a8a8;
+  }
+
+  // [USER] Styling
+  &__post-user,
+  &__comment-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  &__post-user-icon,
+  &__comment-user-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  &__post-user-name,
+  &__comment-user-name {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &__post-user-email,
+  &__comment-user-email {
+    margin-right: 5px;
+  }
+}
