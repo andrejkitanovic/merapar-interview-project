@@ -3,6 +3,15 @@
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
+a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 .posts__post {
   padding: 35px 10px;
   border-bottom: 1px solid #a8a8a8;
